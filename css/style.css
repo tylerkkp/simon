@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-image: url('https://images.pexels.com/photos/220634/pexels-photo-220634.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: 100%;
+  font-family: lobster;
+}
+
+h1 {
+  padding: 0% 55% 0% 45%;
+  font-size: 4em;
+  color: black;
+  text-shadow: 2px 4px gray;
+  background-color: rgba(255,255,255,0.6);
+}
+
+.grid-container {
+  width: 80vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw;
+  grid-template-rows: 10vw 10vw 10vw 10vw 10vw 10vw 10vw 10vw;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+  border-color: silver;
+  border-style: solid;
+  border-width: 5px;
+  margin-bottom: 5%;
+}
+
+.grid-item {
+  border-color: rgba(0,0,0,0);
+  border-width: 2px;
+  border-style: solid;
+  margin: 0px;
+}
+
+#one {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  border-radius: 100% 0 0 0;
+  background-color: #1B998B;
+}
+
+#one:hover {
+  opacity: 0.9;
+}
+
+#two {
+  grid-column-start: 5;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  border-radius: 0 100% 0 0;
+  background-color: #CC3809;
+}
+
+#two:hover {
+  opacity: 0.9;
+}
+
+#center {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 6;
+  z-index: 1; 
+  position: relative;
+  background-color: silver;
+  border-radius: 25%;
+  border-color: gray;
+  line-height: 50px;
+}
+
+#three {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 5;
+  grid-row-end: 9;
+  border-radius: 0 0 0 100%;
+  background-color: #FFBE0B;
+}
+
+#three:hover {
+  opacity: 0.9;
+}
+
+#four {
+  grid-column-start: 5;
+  grid-column-end: 9;
+  grid-row-start: 5;
+  grid-row-end: 9;
+  border-radius: 0 0 100% 0;
+  background-color: #083D77;
+}
+
+#four:hover {
+  opacity: 0.9;
+}
+
+button {
+  width: 8vw;
+  height: 8vw;
+  display: inline;
+  vertical-align: middle;
+  font-family: courier;
+  margin-top: 6%;
+  border-radius: 100%;
+  border-style: solid;
+  border-color: gray;
+  font-size: 1.5em;
+  font-family: lobster;
+  color: black;
+  background-color: #E3E3E3;
+}
+
+button:hover {
+  background-color: #EEEEEE;
+}
+
+#count {
+  color: red;
+  font-family: Gugi;
+}
