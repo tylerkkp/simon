@@ -1,15 +1,14 @@
 // Arbitrary goal for this project: use vanilla JS only. No jQuery or other libraries
 
-//create computer pattern array
-var comppat = [];
-//create string version of comppat array
-var comppatstr = [];
-//create player pattern array
-var playerpat = [];
-//create strict variable
-var strict = 0;
-//create variable to count current 'level'
-var count = 0;
+var comppat = []; //create computer pattern array
+
+var comppatstr = []; //create string version of comppat array
+
+var playerpat = []; //create player pattern array
+
+var strict = 0; //create strict variable
+
+var count = 0; //create variable to count current 'level'
 
 //audio sounds
 var sound1 = "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3";
@@ -23,33 +22,19 @@ var beep2 = new Audio(sound2);
 var beep3 = new Audio(sound3);
 var beep4 = new Audio(sound4);
 
-//compare the two arrays to see if they are equal
-function compare(arr1, arr2) {
-  if (arr1.length !== arr2.length) {
-        alert('dont match');
-        return false;
-  }
-    for (var i = arr1.length; i--;) {
-        if (arr1[i] !== arr2[i]) {
-            alert('boo');
-            return false;
-    }
-    }
-    alert ('yay');
-    return true;
-}
 
-//create test to run at each human button press
+
+//test player button press against generated sequence
 function btntest() {
-  var testitem = playerpat[playerpat.length -1];
-  var checkitem = comppat[playerpat.length -1];
+  var testitem = playerpat[playerpat.length -1]; //testitem = the most recent player input
+  var checkitem = comppat[playerpat.length -1]; //checkitem = the most recent computer input
   if (testitem !== checkitem) {
     if (strict == 1) {
-      alert('wrong');
+      alert('OOPS! Start Over');
       restart();
       compseq();
     } else {
-    alert('wrong');
+    alert('Try Again');
     repeat();
     playerpat = [];
   }
@@ -63,9 +48,10 @@ function btntest() {
 }
 
 function wincondition() {
-  alert('winner!');
+  alert('Yay! You Win!');
 }
 
+//reset all variables and lists
 function restart() {
   updatecount();
   comppat = [];
@@ -74,32 +60,32 @@ function restart() {
   count = 0;
 }
 
-function arraytest() {
-  alert('comppat = ' + comppat + '\n' + 'playerpat = ' + playerpat + '\n' + 'comppatstr = ' + comppatstr);
-}
-
-// Random function
+//generate random integer in range (1:4)
 function randFunc() {
-  return Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+  return Math.floor(Math.random() * 4) + 1;
 }
 
+//temporarily change color of button
 function btnflash(id) {
-  var origcolor = document.getElementById(id).style.backgroundColor;
-  document.getElementById(id).style.backgroundColor = "white";
+  var origcolor = document.getElementById(id).style.backgroundColor; //saves original background color of the element
+  document.getElementById(id).style.backgroundColor = "white"; //changes the background color to white
     setTimeout(function() {
  document.getElementById(id).style.backgroundColor = origcolor;
-    }, 400)
+    }, 400) //after 400ms, changes the background color to the original color
 }
 
-//need to disable buttons so player can't simply 'follow along'
+
+//TODO: need to disable buttons so player can't simply 'follow along'. Still in progress
 function offbtns() {
   document.getElementById('one').style.pointerEvents = 'none';
 }
-//see above: need to re-enable buttons
+//TODO: see above - need to re-enable buttons
 function onbtns() {
   document.getElementById('one').style.pointerEvents = 'auto';
 }
 
+
+//start game function
 function startgame() {
   restart();
   compseq();
@@ -107,9 +93,10 @@ function startgame() {
 
 //computer makes a play
 function compplay(input) {
-  //add the input value to the comppat array
-  comppat.push(input);
+  comppat.push(input); //add the input value to the comppat array
+  
   //takes the input and converts to string to add to the comppatstr array (which is used to look up id's)
+  //probably a more elegant way to look up id's (without creating a separate array), but good excuse to use a switch statement
   switch(input) {
     case 1:
         comppatstr.push('one');
@@ -130,8 +117,8 @@ function compplay(input) {
   playerpat = [];
   count += 1;
   updatecount();
-//////////////////////////////
 }
+
 
 function repeat() {
   var length = comppat.length; //determine how many numbers are in the sequence
@@ -170,22 +157,22 @@ function repeat() {
     default:
         break;
 }
-    if (i < length + 1) {          // If i < length + 1, keep going
+    if (i < length + 1) {
       i++;
-      //call the loop again, this time with updated i as the parameter
-      seqLoop(i);       
+      seqLoop(i); //call the loop again, this time with updated i as the parameter. Will keep running through entire comppat array       
     }
-  }, 800); // 1000ms delay in loop iterations
+  }, 800); // 800ms delay in loop iterations
 })(i);
 }
 
+//update the 'count' readout to show current 'level'
 function updatecount() {
   document.getElementById("count").innerHTML = count;
 }
 
 // Computer sequence
 function compseq() {
-  var randnum = randFunc();
+  var randnum = randFunc(); //store random number generated by randFunc
   compplay(randnum);
 }
 
@@ -223,7 +210,7 @@ function btnfour() {
   btntest();
 }
 
-//strict toggle button
+//strict toggle button: changes color of button and also toggles 'strict' variable
 function toggle() {
   if (!strict) {
  document.getElementById("strictmode").style.backgroundColor = "red";
@@ -233,3 +220,29 @@ function toggle() {
     strict -= 1;
   }
   }
+
+
+
+/* USED FOR TESTING; NO LONGER NEEDED
+//compare the two arrays to check if they are equal
+function compare(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+        alert('dont match');
+        return false;
+  }
+    for (var i = arr1.length; i--;) {
+        if (arr1[i] !== arr2[i]) {
+            alert('boo');
+            return false;
+    }
+    }
+    alert ('yay');
+    return true;
+}
+
+//create popup showing current values for the computer and player sequences
+function arraytest() {
+  alert('comppat = ' + comppat + '\n' + 'playerpat = ' + playerpat + '\n' + 'comppatstr = ' + comppatstr);
+}
+
+*/
