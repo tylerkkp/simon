@@ -6,6 +6,11 @@ Users can play a game of Simon Says. Strict mode starts back at zero if a mistak
 
 [logo]: https://github.com/tylerkkp/simon/blob/master/simon.jpg "screen shot"
 
+#### Technology Used:
+* HTML
+* CSS
+* Javascript
+
 Site can be viewed at [Github Pages](https://www.tkkp.dev/simon/)
 
 Built using [Codepen.io](https://codepen.io/tylerkkp/pen/ZoMRYP)
